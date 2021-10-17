@@ -25,5 +25,6 @@ namespace Teams.Client.Graph
         public const string UserReadWriteAll = "User.ReadWrite.All";
         public const string GroupReadWriteAll = "Group.ReadWrite.All";
 
+        public static int PageSize { get; internal set; } = 20;
     }
 }

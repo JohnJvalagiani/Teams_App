@@ -1,4 +1,5 @@
 ﻿using GraphTutorial.Controllers;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Graph;
 using Microsoft.Identity.Web;
@@ -6,10 +7,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Teams.Client.Graph;
 
 namespace Teams.Client.Controllers
 {
-    public class BaseController
+    public class BaseController: Controller
     {
         protected readonly ITokenAcquisition _tokenAcquisition;
         protected readonly ILogger<HomeController> _logger;
@@ -28,6 +30,27 @@ namespace Teams.Client.Controllers
         }
 
 
+        protected async Task<List<T>> GetAllPages<T>(
+          GraphServiceClient graphClient,
+          ICollectionPage<T> page)
+        {
+            var allItems = new List<T>();
+
+            var pageIterator = PageIterator<T>.CreatePageIterator(
+                graphClient, page,
+                (item) => {
+                    // This code executes for each item in the
+                    // collection
+                    allItems.Add(item);
+                    return true;
+                }
+            );
+
+            await pageIterator.IterateAsync();
+
+            return allItems;
+        }
+
 
         protected GraphServiceClient GetGraphClientForScopes(string[] scopes)
         {
@@ -37,10 +60,8 @@ namespace Teams.Client.Controllers
                     var token = await _tokenAcquisition
                         .GetAccessTokenForUserAsync(scopes);
 
-                    // Uncomment to print access token to debug console
-                    // This will happen for every Graph call, so leave this
-                    // out unless you're debugging your token
-                    //_logger.LogInformation($"Access token: {token}");
+                   
+                  //  _logger.LogInformation($"Access token: {token}");
 
                     return token;
                 }

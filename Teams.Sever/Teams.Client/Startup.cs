@@ -1,4 +1,3 @@
-using AspNetAzureAdGroupsAutorization.Services;
 using Microsoft.AspNetCore.Authentication.AzureAD.UI;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
@@ -21,6 +20,7 @@ using System.Net;
 using System.Net.Http.Headers;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Teams.Application.Services.Abstraction;
 using Teams.Client.Graph;
 
 namespace Teams.Client
@@ -36,6 +36,7 @@ namespace Teams.Client
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<ITeamsManagmentService,TeamsManagmentService> ();
 
         services
        .AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)

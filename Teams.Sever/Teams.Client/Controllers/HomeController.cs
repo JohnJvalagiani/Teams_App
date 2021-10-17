@@ -8,6 +8,7 @@ using Teams.Client.Graph;
 
 namespace GraphTutorial.Controllers
 {
+
     public class HomeController : Controller
     {
         ITokenAcquisition _tokenAcquisition;

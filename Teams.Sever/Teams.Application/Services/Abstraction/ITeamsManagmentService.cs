@@ -9,7 +9,7 @@ namespace Teams.Application.Services.Abstraction
 {
    public interface ITeamsManagmentService
     {
-        Task<IEnumerable<Team>> GetAllTeam();
-        Task<UserData> GetUserData();
+        Task<IEnumerable<TeamResponse>> GetAllTeam(string token);
+        Task<UserData> GetUserData(string token);
     }
 }

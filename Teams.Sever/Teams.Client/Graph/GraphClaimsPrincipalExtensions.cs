@@ -13,19 +13,26 @@ namespace GraphTutorial
 
     public static class GraphClaimsPrincipalExtensions
     {
+        //public static string GetUserGraphDisplayName(this ClaimsPrincipal claimsPrincipal)
+        //{
+        //    return "Adele Vance";
+        //}
+
+        //public static string GetUserGraphEmail(this ClaimsPrincipal claimsPrincipal)
+        //{
+        //    return "adelev@contoso.com";
+        //}
+
+
+
         public static string GetUserGraphDisplayName(this ClaimsPrincipal claimsPrincipal)
         {
-            return "Adele Vance";
+            return claimsPrincipal.FindFirstValue(GraphClaimTypes.DisplayName);
         }
 
         public static string GetUserGraphEmail(this ClaimsPrincipal claimsPrincipal)
         {
-            return "adelev@contoso.com";
-        }
-
-        public static string GetUserGraphPhoto(this ClaimsPrincipal claimsPrincipal)
-        {
-            return "/img/no-profile-photo.png";
+            return claimsPrincipal.FindFirstValue(GraphClaimTypes.Email);
         }
     }
 }
