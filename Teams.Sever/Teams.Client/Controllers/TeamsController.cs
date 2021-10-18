@@ -40,7 +40,7 @@ namespace Teams.Client.Controllers
         }
 
 
-        public async Task<IActionResult> Teams()
+        public async Task<IActionResult> TeamsData()
         {
 
             var model = new TeamsListDisplayModel();
@@ -51,12 +51,12 @@ namespace Teams.Client.Controllers
 
           var teams =  await _teamsManagmentService.GetAllTeam(token);
 
-                return View(model);
+                return new JsonResult(teams);
 
         }
 
 
-        public async Task<IActionResult> User()
+        public async Task<IActionResult> UserData()
         {
 
             var model = new TeamsListDisplayModel();
@@ -69,7 +69,7 @@ namespace Teams.Client.Controllers
 
 
 
-            return View(model);
+            return new JsonResult(user);
 
         }
 

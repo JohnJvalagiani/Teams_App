@@ -3,7 +3,7 @@
 <ul class="nav navbar-nav">
     @if (User.Identity.IsAuthenticated)
     {
-        <li class="nav-item dropdown">
+        @*<li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
             </a>
             <div class="dropdown-menu dropdown-menu-right">
@@ -12,7 +12,7 @@
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignOut">Sign out</a>
             </div>
-        </li>
+        </li>*@
     }
     else
     {

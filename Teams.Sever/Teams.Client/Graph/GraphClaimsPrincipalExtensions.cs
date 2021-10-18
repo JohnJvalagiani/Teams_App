@@ -13,15 +13,7 @@ namespace GraphTutorial
 
     public static class GraphClaimsPrincipalExtensions
     {
-        //public static string GetUserGraphDisplayName(this ClaimsPrincipal claimsPrincipal)
-        //{
-        //    return "Adele Vance";
-        //}
-
-        //public static string GetUserGraphEmail(this ClaimsPrincipal claimsPrincipal)
-        //{
-        //    return "adelev@contoso.com";
-        //}
+        
 
 
 
